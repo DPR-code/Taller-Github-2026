@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+
+# Material del ponente (no se sube)
+ISSUE_COPY.md
+issues/
+ponente/
