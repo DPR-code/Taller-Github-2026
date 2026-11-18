@@ -1,0 +1,28 @@
+#!/bin/sh
+# Rechaza los commits cuya primera línea no sigue Conventional Commits.
+# Se activa en cada clon con: git config core.hooksPath .githooks
+# Ojo: solo actúa en local; cualquiera se lo salta con --no-verify.
+
+subject=$(head -n1 "$1")
+
+types='feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert'
+pattern="^(($types)(\([a-z0-9._-]+\))?!?: .+|Merge .+|Revert \".+\"|(fixup|squash)! .+)"
+
+if printf '%s\n' "$subject" | grep -Eq "$pattern"; then
+    exit 0
+fi
+
+cat >&2 <<EOF
+
+  [hook commit-msg] Commit rechazado: "$subject"
+
+  Usa Conventional Commits:  <tipo>(<ámbito opcional>): <descripción>
+
+    feat: añadir operación módulo         -> funcionalidad nueva (sube MINOR)
+    fix(core): aceptar números con coma   -> corrección de bug   (sube PATCH)
+    feat!: eliminar soporte de python 3.7 -> cambio incompatible (sube MAJOR)
+
+  Tipos válidos: ${types}
+
+EOF
+exit 1
