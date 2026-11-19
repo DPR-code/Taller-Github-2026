@@ -3,6 +3,8 @@
 import tkinter as tk
 
 from calc.core import OPERATIONS, calculate, format_result, parse_number
+from calc.clipboard import copy_to_clipboard
+
 
 BUTTON_COLUMNS = 4
 EMPTY_RESULT = "—"
@@ -47,6 +49,15 @@ class CalculatorApp:
 
         self.status_label = tk.Label(frame, text="", fg="gray")
         self.status_label.grid(row=next_row + 1, column=0, columnspan=BUTTON_COLUMNS)
+        self.result_label.config(cursor="hand2")
+        self.result_label.bind("<Button-1>", self.on_result_click)
+
+    def on_result_click(self, _event):
+        text = self.result_label.cget("text")
+        if text == EMPTY_RESULT:
+            return
+        copy_to_clipboard(self.root, text)
+        self.status_label.config(text=f"Copiado: {text}", fg="green")
 
     def _add_input(self, frame, row, label):
         tk.Label(frame, text=label, font=FONT).grid(row=row, column=0, sticky="e")
