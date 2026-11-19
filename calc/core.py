@@ -2,6 +2,7 @@
 
 from calc.ops.basic import add, divide, multiply, subtract
 from calc.ops.floor_divide import floor_divide
+from calc.ops.hypotenuse import hypotenuse
 
 # Asocia la etiqueta de cada botón con la función que la implementa.
 # La interfaz dibuja un botón por entrada, en este mismo orden.
@@ -11,6 +12,7 @@ OPERATIONS = {
     "*": multiply,
     "/": divide,
     "//": floor_divide,
+    "hyp": hypotenuse,
 }
 
 
