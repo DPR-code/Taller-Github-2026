@@ -2,6 +2,7 @@
 
 from calc.ops.basic import add, divide, multiply, subtract
 from calc.ops.maximum import maximum
+from calc.ops.floor_divide import floor_divide
 
 # Asocia la etiqueta de cada botón con la función que la implementa.
 # La interfaz dibuja un botón por entrada, en este mismo orden.
@@ -11,6 +12,7 @@ OPERATIONS = {
     "*": multiply,
     "/": divide,
     "max": maximum,
+    "//": floor_divide,
 }
 
 
