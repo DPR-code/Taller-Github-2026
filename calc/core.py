@@ -1,6 +1,7 @@
 """Lógica de la calculadora. Este módulo nunca debe importar tkinter."""
 
 from calc.ops.basic import add, divide, multiply, subtract
+from calc.ops.percentage import percentage
 from calc.ops.maximum import maximum
 from calc.ops.floor_divide import floor_divide
 
@@ -11,6 +12,7 @@ OPERATIONS = {
     "-": subtract,
     "*": multiply,
     "/": divide,
+    "%": percentage,
     "max": maximum,
     "//": floor_divide,
 }
