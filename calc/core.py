@@ -1,6 +1,7 @@
 """Lógica de la calculadora. Este módulo nunca debe importar tkinter."""
 
 from calc.ops.basic import add, divide, multiply, subtract
+from calc.ops.maximum import maximum
 from calc.ops.floor_divide import floor_divide
 
 # Asocia la etiqueta de cada botón con la función que la implementa.
@@ -10,6 +11,7 @@ OPERATIONS = {
     "-": subtract,
     "*": multiply,
     "/": divide,
+    "max": maximum,
     "//": floor_divide,
 }
 
